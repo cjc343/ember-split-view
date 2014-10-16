@@ -23,20 +23,18 @@ export default Ember.Component.extend({
   },
 
   style: function() {
-    var s = "position: absolute;";
+    var s = "position:relative;float:left;";
 
     if(this.get('isVertical')) {
-      s += "height:100%;";
+      s += "height:auto;";
+      if (this.get('movableSide')) {
+        s += "width:" + this.get('movablePercent') + "%";
+      }
     } else {
-      s += "width:100%;";
-    }
-
-    if(this.get('fixedSide')) {
-      s += this.get('fixedSide') + ":0px;"
-    }
-
-    if(this.get('movableSide')) {
-      s += this.get('movableSide') + ":" + this.get('movablePercent') + "%";
+      s += "width:auto;";
+      if (this.get('movableSide')) {
+        s += "height:" + this.get('movablePercent') + "%";
+      }
     }
 
     return s;
@@ -47,10 +45,10 @@ export default Ember.Component.extend({
       return;
     }
 
-    if(this.get('movableSide') === "left" || this.get('movableSide') === "top") {
-      return this.get('splitPercentage') + this.get('sashWidthPercentage') / 2;
+    if(this.get('movableSide') === "right" || this.get('movableSide') === "bottom") {
+      return this.get('splitPercentage') - this.get('sashWidthPercentage') / 2;
     } else {
-      return 100 - this.get('splitPercentage') + this.get('sashWidthPercentage') / 2;
+      return 100 - this.get('splitPercentage') - this.get('sashWidthPercentage') / 2;
     }
   }.property('sashWidthPercentage', 'splitPercentage', 'movableSide'),
 
