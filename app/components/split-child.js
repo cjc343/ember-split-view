@@ -26,12 +26,12 @@ export default Ember.Component.extend({
     var s = "position:relative;float:left;";
 
     if(this.get('isVertical')) {
-      s += "height:auto;";
+      s += "height:100%;";
       if (this.get('movableSide')) {
         s += "width:" + this.get('movablePercent') + "%";
       }
     } else {
-      s += "width:auto;";
+      s += "width:100%;";
       if (this.get('movableSide')) {
         s += "height:" + this.get('movablePercent') + "%";
       }
