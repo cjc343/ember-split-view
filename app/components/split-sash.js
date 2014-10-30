@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   },
 
   style: function() {
-    var s = "z-index:9999; position:absolute; opacity:" + this.get('opacity') + ";";
+    var s = "z-index:1049; position:absolute; opacity:" + this.get('opacity') + ";";
 
     if(this.get('isVertical')) {
       s += "left:" + (this.get('splitPercentage') - this.get('widthPercentage') / 2);
